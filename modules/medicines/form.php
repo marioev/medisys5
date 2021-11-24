@@ -90,7 +90,24 @@ if ($_GET['form']=='add') { ?>
                   </select>
                 </div>
               </div>
-
+                <div class="form-group">
+                <label class="col-sm-2 control-label">Categoria</label>
+                <div class="col-sm-5">
+                    <?php
+                    $query1 = mysqli_query($mysqli, "SELECT * FROM categoria ORDER BY categoria_nombre ASC")
+                                            or die('error: '.mysqli_error($mysqli));
+                    ?>
+                    <select class="chosen-select" name="categoria" data-placeholder="-- Seleccionar --" autocomplete="off" required>
+                        <?php
+                        while ($data1 = mysqli_fetch_assoc($query1)) { 
+                        ?>                  
+                        <option value="<?php echo $data1['categoria_nombre'] ?>"><?php echo $data1['categoria_nombre'] ?></option>
+                        <?php
+                        }
+                        ?>
+                    </select>
+                </div>
+              </div>
             </div><!-- /.box body -->
 
             <div class="box-footer">
@@ -112,7 +129,7 @@ if ($_GET['form']=='add') { ?>
 elseif ($_GET['form']=='edit') { 
   if (isset($_GET['id'])) {
 
-      $query = mysqli_query($mysqli, "SELECT codigo,nombre,precio_compra,precio_venta,unidad FROM medicamentos WHERE codigo='$_GET[id]'") 
+      $query = mysqli_query($mysqli, "SELECT codigo,nombre,precio_compra,precio_venta,unidad, categoria FROM medicamentos WHERE codigo='$_GET[id]'") 
                                       or die('error: '.mysqli_error($mysqli));
       $data  = mysqli_fetch_assoc($query);
     }
@@ -184,6 +201,25 @@ elseif ($_GET['form']=='edit') {
                     <option value="raya">Metal</option>
                     <option value="tubo">Tubo</option>
                   </select>
+                </div>
+              </div>
+                <div class="form-group">
+                <label class="col-sm-2 control-label">Categoria</label>
+                <div class="col-sm-5">
+                    <?php
+                    $query1 = mysqli_query($mysqli, "SELECT * FROM categoria ORDER BY categoria_nombre ASC")
+                                            or die('error: '.mysqli_error($mysqli));
+                    ?>
+                    <select class="chosen-select" name="categoria" data-placeholder="-- Seleccionar --" autocomplete="off" required>
+                        <?php
+                        while ($data1 = mysqli_fetch_assoc($query1)) { 
+                            $selected = ($data1['categoria_nombre'] == $data['categoria']) ? ' selected="selected"' : "";
+                        ?>                  
+                        <option value="<?php echo $data1['categoria_nombre'] ?>" <?php echo $selected; ?> ><?php echo $data1['categoria_nombre']; ?></option>
+                        <?php
+                        }
+                        ?>
+                    </select>
                 </div>
               </div>
 

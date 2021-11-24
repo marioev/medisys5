@@ -23,6 +23,35 @@
    
     <!-- Small boxes (Stat box) -->
     <div class="row">
+        <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div style="background-color:#357ebd;color:#fff" class="small-box">
+          <div class="inner">
+            <?php  
+          
+            $query = mysqli_query($mysqli, "SELECT COUNT(categoria_id) as numero FROM categoria")
+                                            or die('Error '.mysqli_error($mysqli));
+
+           
+            $data = mysqli_fetch_assoc($query);
+            ?>
+            <h3><?php echo $data['numero']; ?></h3>
+            <p>Categorias</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-file-text-o"></i>
+          </div>
+          <?php  
+          if ($_SESSION['permisos_acceso']!='gerente') { ?>
+            <a href="?module=form_categorias&form=add" class="small-box-footer" title="Agregar" data-toggle="tooltip"><i class="fa fa-plus"></i></a>
+          <?php
+          } else { ?>
+            <a class="small-box-footer"><i class="fa"></i></a>
+          <?php
+          }
+          ?>
+        </div>
+      </div><!-- ./col -->
       <div class="col-lg-3 col-xs-6">
         <!-- small box -->
         <div style="background-color:#00c0ef;color:#fff" class="small-box">
@@ -52,14 +81,15 @@
           ?>
         </div>
       </div><!-- ./col -->
-
+      
       <div class="col-lg-3 col-xs-6">
         <!-- small box -->
         <div style="background-color:#00a65a;color:#fff" class="small-box">
           <div class="inner">
             <?php   
    
-            $query = mysqli_query($mysqli, "SELECT COUNT(codigo_transaccion) as numero FROM transaccion_medicamentos")
+            $query = mysqli_query($mysqli, "SELECT COUNT(codigo_transaccion) as numero FROM transaccion_medicamentos
+                                            WHERE tipo_transaccion = 'Entrada'")
                                             or die('Error '.mysqli_error($mysqli));
 
 
@@ -82,7 +112,36 @@
           ?>
         </div>
       </div><!-- ./col -->
+      <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div style="background-color:#0055AA;color:#fff" class="small-box">
+          <div class="inner">
+            <?php   
+   
+            $query = mysqli_query($mysqli, "SELECT COUNT(codigo_transaccion) as numero FROM transaccion_medicamentos
+                                            WHERE tipo_transaccion = 'Salida'")
+                                            or die('Error '.mysqli_error($mysqli));
 
+
+            $data = mysqli_fetch_assoc($query);
+            ?>
+            <h3><?php echo $data['numero']; ?></h3>
+            <p>datos de salida de Medicamentos</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-sign-out"></i>
+          </div>
+          <?php  
+          if ($_SESSION['permisos_acceso']!='gerente') { ?>
+            <a href="?module=form_medicines_salida&form=add" class="small-box-footer" title="Agregar" data-toggle="tooltip"><i class="fa fa-plus"></i></a>
+          <?php
+          } else { ?>
+            <a class="small-box-footer"><i class="fa"></i></a>
+          <?php
+          }
+          ?>
+        </div>
+      </div>
       <div class="col-lg-3 col-xs-6">
         <!-- small box -->
         <div style="background-color:#f39c12;color:#fff" class="small-box">

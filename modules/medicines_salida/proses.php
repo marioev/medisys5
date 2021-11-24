@@ -21,15 +21,13 @@ else {
             
             $codigo       = mysqli_real_escape_string($mysqli, trim($_POST['codigo']));
             $num   = mysqli_real_escape_string($mysqli, trim($_POST['num']));
-            $total_stock       = mysqli_real_escape_string($mysqli, trim($_POST['total_stock']));
-            //$tipo_transaccion  = mysqli_real_escape_string($mysqli, trim($_POST['transaccion']));
-            $tipo_transaccion  = "Entrada";
-            $fecha_vencimiento = mysqli_real_escape_string($mysqli, trim($_POST['fecha_vencimiento']));
-            $created_user      = $_SESSION['id_user'];
+            $total_stock      = mysqli_real_escape_string($mysqli, trim($_POST['total_stock']));
+            $tipo_transaccion= mysqli_real_escape_string($mysqli, trim($_POST['transaccion']));
+            $created_user    = $_SESSION['id_user'];
 
           
-            $query = mysqli_query($mysqli, "INSERT INTO transaccion_medicamentos(codigo_transaccion,fecha,codigo,numero,created_user,tipo_transaccion, fecha_vencimiento) 
-                                            VALUES('$codigo_transaccion','$fecha_a','$codigo','$num','$created_user','$tipo_transaccion','$fecha_vencimiento')")
+            $query = mysqli_query($mysqli, "INSERT INTO transaccion_medicamentos(codigo_transaccion,fecha,codigo,numero,created_user,tipo_transaccion) 
+                                            VALUES('$codigo_transaccion','$fecha_a','$codigo','$num','$created_user','$tipo_transaccion')")
                                             or die('Error: '.mysqli_error($mysqli));    
 
            

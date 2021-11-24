@@ -17,13 +17,14 @@ else {
             $nombre  = mysqli_real_escape_string($mysqli, trim($_POST['nombre']));
             $pcompra = str_replace('.', '', mysqli_real_escape_string($mysqli, trim($_POST['pcompra'])));
             $pventa = str_replace('.', '', mysqli_real_escape_string($mysqli, trim($_POST['pventa'])));
-            $unidad     = mysqli_real_escape_string($mysqli, trim($_POST['unidad']));
+            $unidad    = mysqli_real_escape_string($mysqli, trim($_POST['unidad']));
+            $categoria = mysqli_real_escape_string($mysqli, trim($_POST['categoria']));
 
             $created_user = $_SESSION['id_user'];
 
   
-            $query = mysqli_query($mysqli, "INSERT INTO medicamentos(codigo,nombre,precio_compra,precio_venta,unidad,created_user,updated_user) 
-                                            VALUES('$codigo','$nombre','$pcompra','$pventa','$unidad','$created_user','$created_user')")
+            $query = mysqli_query($mysqli, "INSERT INTO medicamentos(codigo,nombre,precio_compra,precio_venta,unidad,created_user,updated_user, categoria) 
+                                            VALUES('$codigo','$nombre','$pcompra','$pventa','$unidad','$created_user','$created_user','$categoria')")
                                             or die('error '.mysqli_error($mysqli));    
 
         
@@ -42,15 +43,17 @@ else {
                 $nombre  = mysqli_real_escape_string($mysqli, trim($_POST['nombre']));
                 $pcompra = str_replace('.', '', mysqli_real_escape_string($mysqli, trim($_POST['pcompra'])));
                 $pventa = str_replace('.', '', mysqli_real_escape_string($mysqli, trim($_POST['pventa'])));
-                $unidad     = mysqli_real_escape_string($mysqli, trim($_POST['unidad']));
+                $unidad    = mysqli_real_escape_string($mysqli, trim($_POST['unidad']));
+                $categoria = mysqli_real_escape_string($mysqli, trim($_POST['categoria']));
 
                 $updated_user = $_SESSION['id_user'];
 
-                $query = mysqli_query($mysqli, "UPDATE medicamentos SET  nombre       = '$nombre',
-                                                                    precio_compra      = '$pcompra',
-                                                                    precio_venta      = '$pventa',
-                                                                    unidad          = '$unidad',
-                                                                    updated_user    = '$updated_user'
+                $query = mysqli_query($mysqli, "UPDATE medicamentos SET  nombre   = '$nombre',
+                                                                    precio_compra = '$pcompra',
+                                                                    precio_venta = '$pventa',
+                                                                    unidad       = '$unidad',
+                                                                    updated_user = '$updated_user',
+                                                                    categoria    = '$categoria'
                                                               WHERE codigo       = '$codigo'")
                                                 or die('error: '.mysqli_error($mysqli));
 

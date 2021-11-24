@@ -242,7 +242,18 @@ if ($_SESSION['permisos_acceso']=='Almacen') { ?>
       </li>
   <?php
   }
-
+  if ($_GET["module"]=="categorias" || $_GET["module"]=="form_categorias") { ?>
+    <li class="active">
+      <a href="?module=categorias"><i class="fa fa-folder"></i> Categorias </a>
+      </li>
+  <?php
+  }
+  else { ?>
+    <li>
+      <a href="?module=categorias"><i class="fa fa-folder"></i> Categorias </a>
+      </li>
+  <?php
+  }
   if ($_GET["module"]=="stock_inventory") { ?>
     <li class="active treeview">
             <a href="javascript:void(0);">

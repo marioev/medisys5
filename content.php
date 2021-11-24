@@ -11,6 +11,12 @@ else {
 	if ($_GET['module'] == 'start') {
 		include "modules/start/view.php";
 	}
+        elseif ($_GET['module'] == 'form_categorias') {
+		include "modules/categorias/form.php";
+	}
+        elseif ($_GET['module'] == 'categorias') {
+		include "modules/categorias/view.php";
+	}
 
 	elseif ($_GET['module'] == 'medicines') {
 		include "modules/medicines/view.php";
@@ -28,7 +34,13 @@ else {
 	elseif ($_GET['module'] == 'form_medicines_transaction') {
 		include "modules/medicines_transaction/form.php";
 	}
-	
+	elseif ($_GET['module'] == 'medicines_salida') {
+		include "modules/medicines_salida/view.php";
+	}
+
+	elseif ($_GET['module'] == 'form_medicines_salida') {
+		include "modules/medicines_salida/form.php";
+	}
 
 	elseif ($_GET['module'] == 'stock_inventory') {
 		include "modules/stock_inventory/view.php";

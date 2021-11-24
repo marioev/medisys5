@@ -5,7 +5,7 @@
     <i class="fa fa-sign-in icon-title"></i> Registro de medicamentos
 
     <a class="btn btn-primary btn-social pull-right" href="?module=form_medicines_transaction&form=add" title="Agregar" data-toggle="tooltip">
-      <i class="fa fa-plus"></i> Entradas
+      <i class="fa fa-plus"></i> Entradas / Salidas
     </a>
   </h1>
 </section>
@@ -30,7 +30,7 @@
     ?>
 
       <div class="box box-primary">
-        <div class="box-body table-responsive">
+        <div class="box-body">
          
           <table id="dataTables1" class="table table-bordered table-striped table-hover">
            
@@ -41,10 +41,9 @@
                 <th class="center">Fecha</th>
                 <th class="center">Codigo</th>
                 <th class="center">Medicamento</th>
-                <th class="center">Tipo</th>
+				<th class="center">Tipo</th>
                 <th class="center">Cant.</th>
                 <th class="center">Unidad</th>
-                <th class="center">Fecha Venc.</th>
               </tr>
             </thead>
          
@@ -52,8 +51,7 @@
             <?php  
             $no = 1;
            
-            $query = mysqli_query($mysqli, "SELECT a.tipo_transaccion, a.codigo_transaccion,a.fecha,a.codigo,a.numero,b.codigo,b.nombre,b.unidad,
-                                            a.fecha_vencimiento
+            $query = mysqli_query($mysqli, "SELECT a.tipo_transaccion, a.codigo_transaccion,a.fecha,a.codigo,a.numero,b.codigo,b.nombre,b.unidad
                                             FROM transaccion_medicamentos as a INNER JOIN medicamentos as b ON a.codigo=b.codigo ORDER BY codigo_transaccion DESC")
                                             or die('error '.mysqli_error($mysqli));
 
@@ -63,11 +61,7 @@
               $exp             = explode('-',$fecha);
               $fecha2   = $exp[2]."-".$exp[1]."-".$exp[0];
 
-                if($data['fecha_vencimiento'] == "" || $data['fecha_vencimiento'] == null || $data['fecha_vencimiento'] == "0000-00-00"){
-                    $lafecha_ven = "";
-                }else{
-                    $lafecha_ven = date("d/m/Y", strtotime($data['fecha_vencimiento']));
-                }
+             
               echo "<tr>
                       <td width='30' class='center'>$no</td>
                       <td width='100' class='center'>$data[codigo_transaccion]</td>
@@ -77,7 +71,6 @@
 					  <td width='80' class='center'>$data[tipo_transaccion]</td>
                       <td width='100' align='right'>$data[numero]</td>
                       <td width='80' class='center'>$data[unidad]</td>
-                      <td width='80' class='center'>".$lafecha_ven."</td>
                     </tr>";
               $no++;
             }

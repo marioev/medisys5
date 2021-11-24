@@ -3,7 +3,7 @@
   function tampil_obat(input){
     var num = input.value;
 
-    $.post("modules/medicines_transaction/medicines.php", {
+    $.post("modules/medicines_salida/medicines.php", {
       dataidobat: num,
     }, function(response) {      
       $('#stok').html(response)
@@ -49,11 +49,11 @@ if ($_GET['form']=='add') { ?>
 
   <section class="content-header">
     <h1>
-      <i class="fa fa-edit icon-title"></i> Entrada de Medicamentos
+      <i class="fa fa-edit icon-title"></i> Salida de Medicamentos
     </h1>
     <ol class="breadcrumb">
       <li><a href="?module=start"><i class="fa fa-home"></i> Inicio </a></li>
-      <li><a href="?module=medicines_transaction"> Entrada </a></li>
+      <li><a href="?module=medicines_salida"> Salida </a></li>
       <li class="active"> Agregar </li>
     </ol>
   </section>
@@ -136,11 +136,11 @@ if ($_GET['form']=='add') { ?>
                 </div>
               </div>
 			  
-              <div class="form-group">
+			  <div class="form-group">
                 <label class="col-sm-2 control-label">Transacción</label>
                 <div class="col-sm-5">
-                    <select name="transaccion" id="transaccion" required class='form-control' onchange="hitung_total_stok();" disabled>
-					<!--<option value="Salida">Salida</option>-->
+                  <select name="transaccion" id="transaccion" required class='form-control' onchange="hitung_total_stok();">
+					<option value="Salida">Salida</option>
 					<option value="Entrada">Entrada</option>
 				  </select>
                 </div>
@@ -150,12 +150,6 @@ if ($_GET['form']=='add') { ?>
                 <label class="col-sm-2 control-label">Total Stock</label>
                 <div class="col-sm-5">
                   <input type="text" class="form-control" id="total_stok" name="total_stock" readonly required>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Fecha de Vencimiento</label>
-                <div class="col-sm-5">
-                  <input type="date" class="form-control" name="fecha_vencimiento" autocomplete="off" value="<?php echo date("Y-m-d"); ?>" required>
                 </div>
               </div>
 
