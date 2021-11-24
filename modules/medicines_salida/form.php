@@ -64,7 +64,7 @@ if ($_GET['form']=='add') { ?>
       <div class="col-md-12">
         <div class="box box-primary">
           <!-- form start -->
-          <form role="form" class="form-horizontal" action="modules/medicines_transaction/proses.php?act=insert" method="POST" name="formObatMasuk">
+          <form role="form" class="form-horizontal" action="modules/medicines_salida/proses.php?act=insert" method="POST" name="formObatMasuk">
             <div class="box-body">
               <?php  
             
@@ -136,12 +136,12 @@ if ($_GET['form']=='add') { ?>
                 </div>
               </div>
 			  
-			  <div class="form-group">
+              <div class="form-group" hidden>
                 <label class="col-sm-2 control-label">Transacción</label>
                 <div class="col-sm-5">
                   <select name="transaccion" id="transaccion" required class='form-control' onchange="hitung_total_stok();">
 					<option value="Salida">Salida</option>
-					<option value="Entrada">Entrada</option>
+					<!--<option value="Entrada">Entrada</option>-->
 				  </select>
                 </div>
               </div>
@@ -159,7 +159,7 @@ if ($_GET['form']=='add') { ?>
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                   <input type="submit" class="btn btn-primary btn-submit" name="Guardar" value="Guardar">
-                  <a href="?module=medicines_transaction" class="btn btn-default btn-reset">Cancelar</a>
+                  <a href="?module=medicines_salida" class="btn btn-default btn-reset">Cancelar</a>
                 </div>
               </div>
             </div><!-- /.box footer -->

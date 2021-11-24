@@ -2,10 +2,10 @@
 
 <section class="content-header">
   <h1>
-    <i class="fa fa-sign-in icon-title"></i> Registro de medicamentos
+    <i class="fa fa-sign-in icon-title"></i> Salida de Medicamentos
 
-    <a class="btn btn-primary btn-social pull-right" href="?module=form_medicines_transaction&form=add" title="Agregar" data-toggle="tooltip">
-      <i class="fa fa-plus"></i> Entradas / Salidas
+    <a class="btn btn-primary btn-social pull-right" href="?module=form_medicines_salida&form=add" title="Agregar Salidas" data-toggle="tooltip">
+      <i class="fa fa-plus"></i> Salidas
     </a>
   </h1>
 </section>

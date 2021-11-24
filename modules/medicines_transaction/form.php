@@ -136,7 +136,7 @@ if ($_GET['form']=='add') { ?>
                 </div>
               </div>
 			  
-              <div class="form-group">
+              <div class="form-group" hidden>
                 <label class="col-sm-2 control-label">Transacción</label>
                 <div class="col-sm-5">
                     <select name="transaccion" id="transaccion" required class='form-control' onchange="hitung_total_stok();" disabled>
