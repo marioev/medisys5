@@ -49,6 +49,9 @@ else {
 	elseif ($_GET['module'] == 'stock_report') {
 		include "modules/stock_report/view.php";
 	}
+	elseif ($_GET['module'] == 'expiration_report') {
+		include "modules/expiration_report/view.php";
+	}
 
 	elseif ($_GET['module'] == 'user') {
 		include "modules/user/view.php";

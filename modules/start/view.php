@@ -183,5 +183,26 @@
           <a href="?module=stock_report" class="small-box-footer" title="Imprimir" data-toggle="tooltip"><i class="fa fa-print"></i></a>
         </div>
       </div><!-- ./col -->
+      <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div style="background-color:#FFC300;color:#fff" class="small-box">
+          <div class="inner">
+            <?php   
+            $fecha_actual = date("Y-m-d");
+            $new_fecha = date("Y-m-d",strtotime($fecha_actual."+ 2 days"));//2 días antes muestra los mediacamentos a vencer
+            $query = mysqli_query($mysqli, "SELECT count(tm.fecha_vencimiento) as numero from transaccion_medicamentos tm where tm.fecha_vencimiento <= '$new_fecha'")
+                                            or die('Error: '.mysqli_error($mysqli));
+
+            $data = mysqli_fetch_assoc($query);
+            ?>
+            <h3><?php echo $data['numero']; ?></h3>
+            <p>Medicamentos a vencer</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+          </div>
+          <a href="?module=expiration_report" class="small-box-footer" title="Medicamentos proximos a expirar" data-toggle="tooltip"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></a>
+        </div>
+      </div><!-- ./col -->
     </div><!-- /.row -->
   </section><!-- /.content -->
