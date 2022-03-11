@@ -1,16 +1,25 @@
-
-
-
+<script type="text/javascript">
+    function imprimir(){
+        print();
+    }
+</script> 
 <section class="content-header">
   <h1>
-    <i class="fa fa-file-text-o icon-title"></i> Medicamentos proximos a expirar
-
-    <a class="btn btn-primary btn-social pull-right" href="modules/expiration_report/print.php" target="_blank">
+    <!--<i class="fa fa-file-text-o icon-title"></i> Medicamentos Proximos a Expirar-->
+    <!--<a class="btn btn-primary btn-social pull-right" href="modules/expiration_report/print.php" target="_blank">
+      <i class="fa fa-print"></i> Imprimir
+    </a>-->
+    <a class="btn btn-primary btn-social pull-right" onclick="imprimir()" target="_blank">
       <i class="fa fa-print"></i> Imprimir
     </a>
   </h1>
 
 </section>
+<div id="title" class="text-center">
+    <h2>
+        Medicamentos Proximos a Expirar
+    </h2>
+</div>
 
 <!-- Main content -->
 <section class="content">
