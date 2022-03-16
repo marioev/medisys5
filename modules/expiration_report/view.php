@@ -28,7 +28,7 @@
       <div class="box box-primary">
         <div class="box-body">
         
-          <table id="dataTables1" class="table table-bordered table-striped table-hover">
+          <table id="dataTables2" class="table table-bordered table-striped table-hover">
           
             <thead>
               <tr>
